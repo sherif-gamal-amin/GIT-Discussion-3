@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIT Discussion (3)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            user-select: none; /* يمنع تحديد النص */
+            -webkit-user-select: none; /* لمتصفحات WebKit مثل Chrome وSafari */
+            -moz-user-select: none; /* لمتصفح Firefox */
+            -ms-user-select: none; /* لمتصفح Internet Explorer/Edge */
+        }
+        @media print { /* إخفاء الصفحة عند الطباعة */
+            body { 
+                display: none;
+            }
+        }
+
+        .quiz-container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .timer {
+            color: red;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question p {
+            font-weight: bold;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            display: none;
+        }
+        .incorrect {
+            color: red;
+        }
+        .correct {
+            color: green;
+        }
+        .question-result {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        img {
+            pointer-events: none; /* يمنع سحب الصور */
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>GIT Discussion (3)</h1>
+        <div class="timer" id="timer">Time remaining: 60 seconds</div>
+
+        <div class="question" id="question-1">
+            <p>1- You see a 75-year-old man with an acute episode of haematemesis, who was admitted the night before and is awaiting an upper GI endoscopy. You are asked on the ward round about the common causes of upper GI bleeding. From the list below, which of the following is the most common cause of upper GI bleeding?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="Mallory–Weiss tear"> Mallory–Weiss tear</label>
+                <label><input type="radio" name="q1" value="Peptic ulcers"> Peptic ulcers</label>
+                <label><input type="radio" name="q1" value="Esophageal varices"> Esophageal varices</label>
+                <label><input type="radio" name="q1" value="Drug induced"> Drug induced</label>
+                <label><input type="radio" name="q1" value="Malignancy"> Malignancy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-2">
+            <p>2- Which of the following does not give rise to hematemesis?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="Carcinoma of the stomach"> Carcinoma of the stomach</label>
+                <label><input type="radio" name="q2" value="Peptic ulcer"> Peptic ulcer</label>
+                <label><input type="radio" name="q2" value="Mallory-Weiss syndrome"> Mallory-Weiss syndrome</label>
+                <label><input type="radio" name="q2" value="Somatostatinoma"> Somatostatinoma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-3">
+            <p>3- A 78 year old woman with osteoarthritis and long-term indomethacin therapy presents as an emergency with a short history of dizziness and passage of black stools over 2 days. Clinically, she has signs of anaemia, tachycardia and hypotension. Her haemoglobin is 55 g/L and her urea is 7 mmol/L (126 mg/ dl) with a creatinine of 85 umol/L (0.96 mg/ dl). What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="She has acute on chronic renal failure due to long-term NSAID therapy"> She has acute on chronic renal failure due to long-term NSAID therapy</label>
+                <label><input type="radio" name="q3" value="She has bled from a gastric Dieulafoy lesion"> She has bled from a gastric Dieulafoy lesion</label>
+                <label><input type="radio" name="q3" value="She has had an acute lower Gl bleed from an NSAID-induced ulcer"> She has had an acute lower Gl bleed from an NSAID-induced ulcer</label>
+                <label><input type="radio" name="q3" value="She has had an acute upper Gl bleed from an NSAID-induced ulcer"> She has had an acute upper Gl bleed from an NSAID-induced ulcer</label>
+                <label><input type="radio" name="q3" value="She has suffered a silent myocardial infarction, which is often asymptomatic in older patients"> She has suffered a silent myocardial infarction, which is often asymptomatic in older patients</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-4">
+            <p>4- Considering the acute management of the patient in previous Question, what is the most important action?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="She should be immediately referred to the on-call surgical team"> She should be immediately referred to the on-call surgical team</label>
+                <label><input type="radio" name="q4" value="She should be resuscitated with colloids/ crystalloids followed by blood products"> She should be resuscitated with colloids/ crystalloids followed by blood products</label>
+                <label><input type="radio" name="q4" value="She should be started on octreotide to stop the bleeding"> She should be started on octreotide to stop the bleeding</label>
+                <label><input type="radio" name="q4" value="She should be started on tranexamic acid to stop the bleeding"> She should be started on tranexamic acid to stop the bleeding</label>
+                <label><input type="radio" name="q4" value="She should undergo immediate endoscopy to treat any bleeding lesions"> She should undergo immediate endoscopy to treat any bleeding lesions</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-5">
+            <p>5- A 53 year old man with known oesophageal varices presents with a large gastrointestinal (GI) bleed. You are the first attending clinician. What is the first step you should take?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="Alert interventional radiology in case transjugular intrahepatic portosystemic stent shunt (TIPSS) is required"> Alert interventional radiology in case transjugular intrahepatic portosystemic stent shunt (TIPSS) is required</label>
+                <label><input type="radio" name="q5" value="Arrange urgent cross-match"> Arrange urgent cross-match</label>
+                <label><input type="radio" name="q5" value="Arrange urgent endoscopy and banding"> Arrange urgent endoscopy and banding</label>
+                <label><input type="radio" name="q5" value="Insert large-bore cannula and give fluids"> Insert large-bore cannula and give fluids</label>
+                <label><input type="radio" name="q5" value="Organise bedside ultrasound to assess for portal vein thrombosis"> Organise bedside ultrasound to assess for portal vein thrombosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-6">
+            <p>6- A 60 year old with a background of non-alcoholic steatohepatitis with cirrhosis presents with fresh haematemesis, melena and collapse. Endoscopy reveals oesophageal varices as the origin of bleeding. Which of the following is an appropriate treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="Band ligation"> Band ligation</label>
+                <label><input type="radio" name="q6" value="Clip placement"> Clip placement</label>
+                <label><input type="radio" name="q6" value="Heater probe coagulation"> Heater probe coagulation</label>
+                <label><input type="radio" name="q6" value="Injection of adrenaline (epinephrine)"> Injection of adrenaline (epinephrine)</label>
+                <label><input type="radio" name="q6" value="Laparotomy"> Laparotomy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-7">
+            <p>7- A 31-year-old man with a known history of alcoholic liver disease is reviewed following a suspected esophageal variceal haemorrhage. He has been resuscitated and intravenous terlipressin has been given. His blood pressure is now 104/60 mmHg and his pulse is 84/min. What is the most appropriate intervention?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="Transjugular Intrahepatic Portosystemic Shunt"> Transjugular Intrahepatic Portosystemic Shunt</label>
+                <label><input type="radio" name="q7" value="Surgical referral"> Surgical referral</label>
+                <label><input type="radio" name="q7" value="Endoscopic variceal band ligation"> Endoscopic variceal band ligation</label>
+                <label><input type="radio" name="q7" value="Sengstaken-Blakemore tube"> Sengstaken-Blakemore tube</label>
+                <label><input type="radio" name="q7" value="Endoscopic sclerotherapy"> Endoscopic sclerotherapy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-8">
+            <p>8- A 34-year-old female with a history of alcoholic liver disease is admitted with frank haematemesis. She was discharged three months ago following treatment for bleeding oesophageal varices. Following resuscitation, what is the most appropriate treatment whilst awaiting endoscopy?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="Octreotide"> Octreotide</label>
+                <label><input type="radio" name="q8" value="Omeprazole"> Omeprazole</label>
+                <label><input type="radio" name="q8" value="Propranolol"> Propranolol</label>
+                <label><input type="radio" name="q8" value="Tranexamic acid"> Tranexamic acid</label>
+                <label><input type="radio" name="q8" value="Terlipressin"> Terlipressin</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-9">
+            <p>9- A patient with suspected variceal bleeding cannot have an endoscopy because of lack of an available trained endoscopist. She is becoming increasingly unstable. Which of the following is a medical therapy appropriate for use in the first instance to establish haemodynamic control?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="Glypressin"> Glypressin</label>
+                <label><input type="radio" name="q9" value="Noradrenaline (norepinephrine)"> Noradrenaline (norepinephrine)</label>
+                <label><input type="radio" name="q9" value="Propranolol"> Propranolol</label>
+                <label><input type="radio" name="q9" value="Subcutaneous octreotide"> Subcutaneous octreotide</label>
+                <label><input type="radio" name="q9" value="Tranexamic acid"> Tranexamic acid</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-10">
+            <p>10- A 54 year old man with alcoholic cirrhosis presents with haematemesis. The patient is commenced on terlipressin and emergency upper Gl endoscopy is performed, which demonstrates large esophageal varices with active bleeding. The varices are banded with good hemostatic effect. What medicine would you start as secondary prophylaxis to reduce the chance of further variceal haemorrhage in the future?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="Atenolol"> Atenolol</label>
+                <label><input type="radio" name="q10" value="isosorbide mononitrate"> isosorbide mononitrate</label>
+                <label><input type="radio" name="q10" value="Losartan"> Losartan</label>
+                <label><input type="radio" name="q10" value="Propranolol"> Propranolol</label>
+                <label><input type="radio" name="q10" value="Ramipril"> Ramipril</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-11">
+            <p>11- Patient presented with hematemesis. Endoscopy done. 2 gastric ulcers were found and h. Pylori negative .. What is treatment?</p>
+            <div class="options">
+                <label><input type="radio" name="q11" value="PPI for 8 weeks"> PPI for 8 weeks</label>
+                <label><input type="radio" name="q11" value="Repeat endoscopy"> Repeat endoscopy</label>
+                <label><input type="radio" name="q11" value="Triple therapy of h. Pylori"> Triple therapy of h. Pylori</label>
+                <label><input type="radio" name="q11" value="Blood transfusion"> Blood transfusion</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-12">
+            <p>12- 24 years old man brought to ER by ambulance with profound hematemesis. He was found to have posterior gastric ulcer and treated endoscopically. Following endoscopic treatment, he had 2 episodes of hematemesis and dark stools. He undergo upper endoscopy again but field is bloody and doctor cant see source of bleeding. Heart rate 123, blood pressure 90/60.. which of the following treatment is most appropriate ?</p>
+            <div class="options">
+                <label><input type="radio" name="q12" value="Repeat endoscopic treatment"> Repeat endoscopic treatment</label>
+                <label><input type="radio" name="q12" value="Laparotomy and surgical exploration"> Laparotomy and surgical exploration</label>
+                <label><input type="radio" name="q12" value="Intravenous terlipressin"> Intravenous terlipressin</label>
+                <label><input type="radio" name="q12" value="Intravenous proton pump inhibitor"> Intravenous proton pump inhibitor</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-13">
+            <p>13- A 25-year-old man is admitted with nausea and frequent vomiting four hours after a meal in a restaurant. Lastly he vomits a cup full of blood. What is the cause of his hematemesis?</p>
+            <div class="options">
+                <label><input type="radio" name="q13" value="Duodenal ulceration"> Duodenal ulceration</label>
+                <label><input type="radio" name="q13" value="Esophageal varices"> Esophageal varices</label>
+                <label><input type="radio" name="q13" value="Esophagitis"> Esophagitis</label>
+                <label><input type="radio" name="q13" value="Hemorrhagic Gastritis"> Hemorrhagic Gastritis</label>
+                <label><input type="radio" name="q13" value="Mallory-Weiss tear"> Mallory-Weiss tear</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-14">
+            <p>14- A 43-year-old man presents with diarrhoea and rectal bleeding for the past ten days. On examination he has brown pigmented lesions on his lips and palms but abdominal and rectal examination is unremarkable. What is the most likely cause for this presentation?</p>
+            <div class="options">
+                <label><input type="radio" name="q14" value="Intussusception"> Intussusception</label>
+                <label><input type="radio" name="q14" value="Angiodysplasia"> Angiodysplasia</label>
+                <label><input type="radio" name="q14" value="Meckel's Diverticulum"> Meckel's Diverticulum</label>
+                <label><input type="radio" name="q14" value="Colon cancer"> Colon cancer</label>
+                <label><input type="radio" name="q14" value="Diverticular abscess"> Diverticular abscess</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-15">
+            <p>15- A 27-year-old man with multiple pigmented freckles on his lips and face is investigated for iron-deficiency anaemia. A diagnosis of Peutz-Jeghers syndrome is suspected. What is the mode of inheritance?</p>
+            <div class="options">
+                <label><input type="radio" name="q15" value="Autosomal dominant"> Autosomal dominant</label>
+                <label><input type="radio" name="q15" value="Mitochondrial inheritance"> Mitochondrial inheritance</label>
+                <label><input type="radio" name="q15" value="X-linked dominant"> X-linked dominant</label>
+                <label><input type="radio" name="q15" value="Autosomal recessive"> Autosomal recessive</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-16">
+            <p>16- You see a 21-year-old woman on your ward round who has been admitted for further investigation for longstanding iron deficiency anaemia. You are told by your registrar that colonoscopy revealed multiple hamartomatous polyps suggestive of Peutz–Jeghers syndrome. From the list below, which one of the following is the most likely mode of inheritance of Peutz–Jeghers syndrome:</p>
+            <div class="options">
+                <label><input type="radio" name="q16" value="Autosomal recessive"> Autosomal recessive</label>
+                <label><input type="radio" name="q16" value="Autosomal dominant"> Autosomal dominant</label>
+                <label><input type="radio" name="q16" value="X-linked dominant"> X-linked dominant</label>
+                <label><input type="radio" name="q16" value="Polygenic"> Polygenic</label>
+                <label><input type="radio" name="q16" value="None of the above"> None of the above</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-17">
+            <p>17- Which one of the following medications is least associated with dyspepsia'?</p>
+            <div class="options">
+                <label><input type="radio" name="q17" value="Isosorbide mononitrate"> Isosorbide mononitrate</label>
+                <label><input type="radio" name="q17" value="Prednisolone"> Prednisolone</label>
+                <label><input type="radio" name="q17" value="Aminophylline"> Aminophylline</label>
+                <label><input type="radio" name="q17" value="Atenolol"> Atenolol</label>
+                <label><input type="radio" name="q17" value="Amlodipine"> Amlodipine</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-18">
+            <p>18- A 35-year-old man who is usually fit and well presents with a 2 month history of indigestion. His weight is stable and there is no history of dysphagia. Examination of the abdomen is unremarkable Of the following options, what is the most suitable initial management?</p>
+            <div class="options">
+                <label><input type="radio" name="q18" value="Urea breath testing and non-urgent referral for endoscopy"> Urea breath testing and non-urgent referral for endoscopy</label>
+                <label><input type="radio" name="q18" value="H pylori eradication therapy and full-dose proton pump inhibitor for three months"> H pylori eradication therapy and full-dose proton pump inhibitor for three months</label>
+                <label><input type="radio" name="q18" value="Full-dose Proton pump inhibitor and immediate referral for endoscopy"> Full-dose Proton pump inhibitor and immediate referral for endoscopy</label>
+                <label><input type="radio" name="q18" value="Three month course of a standard-dose proton pump inhibitor"> Three month course of a standard-dose proton pump inhibitor</label>
+                <label><input type="radio" name="q18" value="One month course of a full-dose proton pump inhibitor"> One month course of a full-dose proton pump inhibitor</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-19">
+            <p>19- Which of the following is a defence mechanism that is unique to the stomach?</p>
+            <div class="options">
+                <label><input type="radio" name="q19" value="Hydrochloric acid secretion"> Hydrochloric acid secretion</label>
+                <label><input type="radio" name="q19" value="Immunoglobulins"> Immunoglobulins</label>
+                <label><input type="radio" name="q19" value="Macrophages"> Macrophages</label>
+                <label><input type="radio" name="q19" value="Peyer's patches"> Peyer's patches</label>
+                <label><input type="radio" name="q19" value="T lymphocytes"> T lymphocytes</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-20">
+            <p>20- Which statement is true regarding Helicobacter pylori (H. pylori) infection?</p>
+            <div class="options">
+                <label><input type="radio" name="q20" value="Asymptomatic subjects are rarely infected by H. pylori"> Asymptomatic subjects are rarely infected by H. pylori</label>
+                <label><input type="radio" name="q20" value="It is always present in patients with dyspepsia"> It is always present in patients with dyspepsia</label>
+                <label><input type="radio" name="q20" value="It is always present in patients with peptic ulcers"> It is always present in patients with peptic ulcers</label>
+                <label><input type="radio" name="q20" value="It is usually acquired during early adulthood"> It is usually acquired during early adulthood</label>
+                <label><input type="radio" name="q20" value="When present, it is always associated with gastritis"> When present, it is always associated with gastritis</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-21">
+            <p>21- A patient with upper gastrointestinal symptoms tests positive for Helicobacter Pylori following a urea breath test. Which one of the following conditions is most strongly associated with Helicobacter Pylori infection?</p>
+            <div class="options">
+                <label><input type="radio" name="q21" value="Gastric adenocarcinoma"> Gastric adenocarcinoma</label>
+                <label><input type="radio" name="q21" value="Gastro-oesophageal reflux disease"> Gastro-oesophageal reflux disease</label>
+                <label><input type="radio" name="q21" value="Oesophageal cancer"> Oesophageal cancer</label>
+                <label><input type="radio" name="q21" value="Duodenal ulceration"> Duodenal ulceration</label>
+                <label><input type="radio" name="q21" value="Atrophic gastritis"> Atrophic gastritis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-22">
+            <p>22- Commonest cause of antral gastritis is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q22" value="Alcohol"> Alcohol</label>
+                <label><input type="radio" name="q22" value="H. Pylori infection"> H. Pylori infection</label>
+                <label><input type="radio" name="q22" value="Pernicious anaemia"> Pernicious anaemia</label>
+                <label><input type="radio" name="q22" value="Herpes virus infection"> Herpes virus infection</label>
+                <label><input type="radio" name="q22" value="NSAID"> NSAID</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-23">
+            <p>23- Which one of the following is not associated with oesophageal cancer?</p>
+            <div class="options">
+                <label><input type="radio" name="q23" value="Achalasia"> Achalasia</label>
+                <label><input type="radio" name="q23" value="Smoking"> Smoking</label>
+                <label><input type="radio" name="q23" value="Gastro-oesophageal reflux disease"> Gastro-oesophageal reflux disease</label>
+                <label><input type="radio" name="q23" value="Helicobacter pylori"> Helicobacter pylori</label>
+                <label><input type="radio" name="q23" value="Alcohol"> Alcohol</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-24">
+            <p>24- H. Pylori is usually not associated with ..</p>
+            <div class="options">
+                <label><input type="radio" name="q24" value="Zollinger-Ellison syndrome"> Zollinger-Ellison syndrome</label>
+                <label><input type="radio" name="q24" value="Antral gastritis"> Antral gastritis</label>
+                <label><input type="radio" name="q24" value="Non-ulcer dyspepsia"> Non-ulcer dyspepsia</label>
+                <label><input type="radio" name="q24" value="Gastric lymphoma"> Gastric lymphoma</label>
+                <label><input type="radio" name="q24" value="Peptic ulcer"> Peptic ulcer</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-25">
+            <p>25- Which of the following is a risk factor for Helicobacter pylori infection?</p>
+            <div class="options">
+                <label><input type="radio" name="q25" value="excess exposure to antibiotics"> excess exposure to antibiotics</label>
+                <label><input type="radio" name="q25" value="female sex"> female sex</label>
+                <label><input type="radio" name="q25" value="alpha1-antitrypsin deficiency"> alpha1-antitrypsin deficiency</label>
+                <label><input type="radio" name="q25" value="low socioeconomic indicators"> low socioeconomic indicators</label>
+                <label><input type="radio" name="q25" value="proton pump inhibitor therapy"> proton pump inhibitor therapy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-26">
+            <p>26- A 65-year-old man with a history of dyspepsia is found to have a gastric MALT lymphoma on biopsy. What treatment should be offered?</p>
+            <div class="options">
+                <label><input type="radio" name="q26" value="Gastrectomy"> Gastrectomy</label>
+                <label><input type="radio" name="q26" value="Laser ablation"> Laser ablation</label>
+                <label><input type="radio" name="q26" value="None"> None</label>
+                <label><input type="radio" name="q26" value="CHOP chemotherapy"> CHOP chemotherapy</label>
+                <label><input type="radio" name="q26" value="H. pylori eradication"> H. pylori eradication</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-27">
+            <p>27- Which statement about eradication therapy of H. pylori infection is correct?</p>
+            <div class="options">
+                <label><input type="radio" name="q27" value="Erythromycin is the most useful component of eradication regimens"> Erythromycin is the most useful component of eradication regimens</label>
+                <label><input type="radio" name="q27" value="If first -line eradication therapy fails, the same course should be repeated for another week"> If first -line eradication therapy fails, the same course should be repeated for another week</label>
+                <label><input type="radio" name="q27" value="Metronidazole is no longer of benefit in eradication regimens due to the very high resistance rates"> Metronidazole is no longer of benefit in eradication regimens due to the very high resistance rates</label>
+                <label><input type="radio" name="q27" value="The inclusion of high-dose, twice-daily PPI therapy in eradication regimens increases efficacy of treatment"> The inclusion of high-dose, twice-daily PPI therapy in eradication regimens increases efficacy of treatment</label>
+                <label><input type="radio" name="q27" value="The rate of success of eradication therapy is strongly dependent on the rate of amoxicillin resistance in the population"> The rate of success of eradication therapy is strongly dependent on the rate of amoxicillin resistance in the population</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-28">
+            <p>28- A 44-year-old man is diagnosed with a duodenal ulcer. CLO testing performed during the gastroscopy is positive for Helicobacter pylori. What is the most appropriate management to eradicate Helicobacter pylori?</p>
+            <div class="options">
+                <label><input type="radio" name="q28" value="Lansoprazole + clindamycin + metronidazole"> Lansoprazole + clindamycin + metronidazole</label>
+                <label><input type="radio" name="q28" value="Lansoprazole + amoxicillin + clindamycin"> Lansoprazole + amoxicillin + clindamycin</label>
+                <label><input type="radio" name="q28" value="Lansoprazole + amoxicillin + clarithromycin"> Lansoprazole + amoxicillin + clarithromycin</label>
+                <label><input type="radio" name="q28" value="Omeprazole + amoxicillin + clindamycin"> Omeprazole + amoxicillin + clindamycin</label>
+                <label><input type="radio" name="q28" value="Omeprazole + penicillin + metronidazole"> Omeprazole + penicillin + metronidazole</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-29">
+            <p>29- A 54-year-old man is investigated for dyspepsia. An endoscopy shows a gastric ulcer and a CLO test done during the procedure demonstrates H. pylori infection. A course of H. pylori eradication therapy is given. Six weeks later the patients comes to review. What is the most appropriate test to confirm eradication?</p>
+            <div class="options">
+                <label><input type="radio" name="q29" value="Culture of gastric biopsy"> Culture of gastric biopsy</label>
+                <label><input type="radio" name="q29" value="H. pylori serology"> H. pylori serology</label>
+                <label><input type="radio" name="q29" value="Hydrogen breath test"> Hydrogen breath test</label>
+                <label><input type="radio" name="q29" value="Urea breath test"> Urea breath test</label>
+                <label><input type="radio" name="q29" value="Stool culture"> Stool culture</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-30">
+            <p>30- A 30-year-old woman presents with a three month history of indigestion There is no history of weight loss, anorexia dysphagia, vomiting or change in bowel habit and abdominal examination is unremarkable. Which one of the following may decrease the accuracy of a 13C-urea breath test?</p>
+            <div class="options">
+                <label><input type="radio" name="q30" value="Use of Gaviscon around 10 days ago"> Use of Gaviscon around 10 days ago</label>
+                <label><input type="radio" name="q30" value="Use of ranitidine stopping 4 weeks ago"> Use of ranitidine stopping 4 weeks ago</label>
+                <label><input type="radio" name="q30" value="Course of amoxicillin stopping 3 weeks ago"> Course of amoxicillin stopping 3 weeks ago</label>
+                <label><input type="radio" name="q30" value="Use of lansoprazole stopping 6 weeks ago"> Use of lansoprazole stopping 6 weeks ago</label>
+                <label><input type="radio" name="q30" value="Current use of the combined oral contraceptive"> Current use of the combined oral contraceptive</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-31">
+            <p>31- Gastric cancer is a leading cause of cancer-related mortality worldwide. Which statement about this malignancy is correct?</p>
+            <div class="options">
+                <label><input type="radio" name="q31" value="Africa has the highest incidence rates due to the poor diet"> Africa has the highest incidence rates due to the poor diet</label>
+                <label><input type="radio" name="q31" value="Diet is the most important risk factor"> Diet is the most important risk factor</label>
+                <label><input type="radio" name="q31" value="H. pylori infection is the most recognised acquired risk factor"> H. pylori infection is the most recognised acquired risk factor</label>
+                <label><input type="radio" name="q31" value="The incidence has been steadily rising in most parts of the world in the past 3 decades"> The incidence has been steadily rising in most parts of the world in the past 3 decades</label>
+                <label><input type="radio" name="q31" value="The overall 5-year survival rates are now around 50%"> The overall 5-year survival rates are now around 50%</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-32">
+            <p>32- Each one of the following is a risk factor for gastric cancer, except:</p>
+            <div class="options">
+                <label><input type="radio" name="q32" value="Smoking"> Smoking</label>
+                <label><input type="radio" name="q32" value="Blood group 0"> Blood group 0</label>
+                <label><input type="radio" name="q32" value="Nitrates in diet"> Nitrates in diet</label>
+                <label><input type="radio" name="q32" value="Pernicious anaemia"> Pernicious anaemia</label>
+                <label><input type="radio" name="q32" value="H. pylori infection"> H. pylori infection</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-33">
+            <p>33- Commonest site of carcinoma of the stomach is:</p>
+            <div class="options">
+                <label><input type="radio" name="q33" value="Prepyloric"> Prepyloric</label>
+                <label><input type="radio" name="q33" value="Lesser Curvature"> Lesser Curvature</label>
+                <label><input type="radio" name="q33" value="Greater Curvature"> Greater Curvature</label>
+                <label><input type="radio" name="q33" value="Body Of The Stomach"> Body Of The Stomach</label>
+                <label><input type="radio" name="q33" value="Fundus"> Fundus</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-34">
+            <p>34- A 54-year-old man who is known to have gastric cancer is reviewed in clinic. He asks you about a rash he has developed. Which of the following skin disorders is most associated with gastric cancer?</p>
+            <div class="options">
+                <label><input type="radio" name="q34" value="Erythema gyratum repens"> Erythema gyratum repens</label>
+                <label><input type="radio" name="q34" value="Necrolytic migratory erythema"> Necrolytic migratory erythema</label>
+                <label><input type="radio" name="q34" value="Sweet's syndrome"> Sweet's syndrome</label>
+                <label><input type="radio" name="q34" value="Acquired ichthyosis"> Acquired ichthyosis</label>
+                <label><input type="radio" name="q34" value="Acanthosis nigricans"> Acanthosis nigricans</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-35">
+            <p>35- The most common gastrointestinal disorder in community is:</p>
+            <div class="options">
+                <label><input type="radio" name="q35" value="Diverticulitis"> Diverticulitis</label>
+                <label><input type="radio" name="q35" value="Duodenal ulcer"> Duodenal ulcer</label>
+                <label><input type="radio" name="q35" value="Reflux esophagitis"> Reflux esophagitis</label>
+                <label><input type="radio" name="q35" value="Irritable bowel syndrome"> Irritable bowel syndrome</label>
+                <label><input type="radio" name="q35" value="peptic ulcer"> peptic ulcer</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-36">
+            <p>36- Which is true regarding irritable bowel syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q36" value="abdominal pain usually lasts for 1/2 hour"> abdominal pain usually lasts for 1/2 hour</label>
+                <label><input type="radio" name="q36" value="Temporary relief of pain by passage of flatus or stool with sense of incomplete evacuation"> Temporary relief of pain by passage of flatus or stool with sense of incomplete evacuation</label>
+                <label><input type="radio" name="q36" value="Nocturnal pain abdomen is frequent complaint"> Nocturnal pain abdomen is frequent complaint</label>
+                <label><input type="radio" name="q36" value="Periodicity is common"> Periodicity is common</label>
+                <label><input type="radio" name="q36" value="Positive occult blood in stools is common"> Positive occult blood in stools is common</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-37">
+            <p>37- A patient presents with gastrointestinal symptoms. Which one of the following features in the history would be least consistent with making a diagnosis of irritable bowel syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q37" value="Urgency to open bowels"> Urgency to open bowels</label>
+                <label><input type="radio" name="q37" value="Symptoms made worse by eating"> Symptoms made worse by eating</label>
+                <label><input type="radio" name="q37" value="62-year-oId female"> 62-year-oId female</label>
+                <label><input type="radio" name="q37" value="Passage of mucous with stool"> Passage of mucous with stool</label>
+                <label><input type="radio" name="q37" value="Bladder symptoms"> Bladder symptoms</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-38">
+            <p>38- A 30-year-old woman presents with abdominal pain that is associated with alternating diarrhoea and constipation. Which one of the following symptoms is least consistent with a diagnosis of irritable bowel syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q38" value="Feeling of incomplete stool evacuation"> Feeling of incomplete stool evacuation</label>
+                <label><input type="radio" name="q38" value="Waking at night due to the pain"> Waking at night due to the pain</label>
+                <label><input type="radio" name="q38" value="Abdominal bloating"> Abdominal bloating</label>
+                <label><input type="radio" name="q38" value="Faecal urgency"> Faecal urgency</label>
+                <label><input type="radio" name="q38" value="Passage of mucous with stool"> Passage of mucous with stool</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-39">
+            <p>39- After a careful history and physical and a cost-effective workup, you have diagnosed a 24-year-old woman patient with irritable bowel syndrome. What other condition would you reasonably expect to find in this patient?</p>
+            <div class="options">
+                <label><input type="radio" name="q39" value="Abnormal brain anatomy"> Abnormal brain anatomy</label>
+                <label><input type="radio" name="q39" value="Autoimmune disease"> Autoimmune disease</label>
+                <label><input type="radio" name="q39" value="History of sexually transmitted diseases"> History of sexually transmitted diseases</label>
+                <label><input type="radio" name="q39" value="Psychiatric diagnosis"> Psychiatric diagnosis</label>
+                <label><input type="radio" name="q39" value="Sensory hypersensitivity to peripheral stimuli"> Sensory hypersensitivity to peripheral stimuli</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-40">
+            <p>40- According to recent NICE guidelines, which one of the following may have a role in the management of irritable bowel syndrome?</p>
+            <div class="options">
+                <label><input type="radio" name="q40" value="Reflexology"> Reflexology</label>
+                <label><input type="radio" name="q40" value="Acupuncture"> Acupuncture</label>
+                <label><input type="radio" name="q40" value="Aloe vera"> Aloe vera</label>
+                <label><input type="radio" name="q40" value="Homeopathy"> Homeopathy</label>
+                <label><input type="radio" name="q40" value="Hypnotherapy"> Hypnotherapy</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-41">
+            <p>41- A 27-year-old woman with chronic left iliac fossa pain and alternating bowel habit is diagnosed with irritable bowel syndrome. Initial treatment is tried with a combination of antispasmodics, laxatives and anti-motility agents. Unfortunately after 6 months there has been no significant improvement in her symptoms. According to recent NICE guidelines, what is the most appropriate next step?</p>
+            <div class="options">
+                <label><input type="radio" name="q41" value="Low-dose tricyclic antidepressant"> Low-dose tricyclic antidepressant</label>
+                <label><input type="radio" name="q41" value="Cognitive behavioural therapy"> Cognitive behavioural therapy</label>
+                <label><input type="radio" name="q41" value="Refer for sigmoidoscopy"> Refer for sigmoidoscopy</label>
+                <label><input type="radio" name="q41" value="Trial of probiotics"> Trial of probiotics</label>
+                <label><input type="radio" name="q41" value="Selective serotonin reuptake inhibitor"> Selective serotonin reuptake inhibitor</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-42">
+            <p>42- 40-year-old man is investigated for abnormal liver function tests. It is decided to perform a liver biopsy. Which one of the following is contraindication to liver biopsy?</p>
+            <div class="options">
+                <label><input type="radio" name="q42" value="ALT Of 2,212 iu/l"> ALT Of 2,212 iu/l</label>
+                <label><input type="radio" name="q42" value="Aspirin therapy"> Aspirin therapy</label>
+                <label><input type="radio" name="q42" value="Platelet count of 100 * 109/l"> Platelet count of 100 * 109/l</label>
+                <label><input type="radio" name="q42" value="Body mass index of 33 kg/m2"> Body mass index of 33 kg/m2</label>
+                <label><input type="radio" name="q42" value="Extrahepatic biliary obstruction"> Extrahepatic biliary obstruction</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-43">
+            <p>43- Absolute contraindication for liver biopsy is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q43" value="Cirrhosis of liver"> Cirrhosis of liver</label>
+                <label><input type="radio" name="q43" value="Cholestasis"> Cholestasis</label>
+                <label><input type="radio" name="q43" value="Hemangioma of liver"> Hemangioma of liver</label>
+                <label><input type="radio" name="q43" value="Amoebic liver abscess"> Amoebic liver abscess</label>
+                <label><input type="radio" name="q43" value="Schistosomiasis"> Schistosomiasis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-44">
+            <p>44- Which one of the following is not a contraindication to performing a percutaneous liver biopsy?</p>
+            <div class="options">
+                <label><input type="radio" name="q44" value="INR 2.6"> INR 2.6</label>
+                <label><input type="radio" name="q44" value="Viral hepatitis"> Viral hepatitis</label>
+                <label><input type="radio" name="q44" value="Hydatid cyst"> Hydatid cyst</label>
+                <label><input type="radio" name="q44" value="Uncooperative patient"> Uncooperative patient</label>
+                <label><input type="radio" name="q44" value="Haemangioma"> Haemangioma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-45">
+            <p>45- A 42-year-old man of Eastern European Jewish descent develops aseptic necrosis of the femoral head. The other femur shows evidence of osteopenia, and there is diffuse osteopenia of the spine with some collapse. Review of medical records reveals he has had splenomegaly and mild pancytopenia for years. A bone marrow examination is abnormal for infiltration with lipid-laden macrophages called “Gaucher cells.” Which of the following is the most likely mechanism for this condition?</p>
+            <div class="options">
+                <label><input type="radio" name="q45" value="insulin deficiency"> insulin deficiency</label>
+                <label><input type="radio" name="q45" value="abnormal elastic tissue"> abnormal elastic tissue</label>
+                <label><input type="radio" name="q45" value="excess iron in tissue"> excess iron in tissue</label>
+                <label><input type="radio" name="q45" value="homocystinuria"> homocystinuria</label>
+                <label><input type="radio" name="q45" value="abnormal lysosomal enzymes"> abnormal lysosomal enzymes</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-46">
+            <p>46- Which one of the following is not associated with villous atrophy on jejunal biopsy?</p>
+            <div class="options">
+                <label><input type="radio" name="q46" value="Tropical sprue"> Tropical sprue</label>
+                <label><input type="radio" name="q46" value="Coeliac disease"> Coeliac disease</label>
+                <label><input type="radio" name="q46" value="Hypogammaglobulinaemia"> Hypogammaglobulinaemia</label>
+                <label><input type="radio" name="q46" value="Familial Mediterranean Fever"> Familial Mediterranean Fever</label>
+                <label><input type="radio" name="q46" value="Whipple's disease"> Whipple's disease</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-47">
+            <p>47 -Which one of the following patients would it be most suitable to offer a screening test for coeliac disease to?</p>
+            <div class="options">
+                <label><input type="radio" name="q47" value="A patient who is 'tired all the time"> A patient who is 'tired all the time</label>
+                <label><input type="radio" name="q47" value="A patient with rheumatoid arthritis"> A patient with rheumatoid arthritis</label>
+                <label><input type="radio" name="q47" value="A patient who has a family history of inflammatory bowel disease"> A patient who has a family history of inflammatory bowel disease</label>
+                <label><input type="radio" name="q47" value="A patient with type 2 diabetes mellitus"> A patient with type 2 diabetes mellitus</label>
+                <label><input type="radio" name="q47" value="A patient who develops erythema nodosum"> A patient who develops erythema nodosum</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-48">
+            <p>48- A 23 year old woman presents with 8-month history of bloating, loose stool and bowel-opening frequency of 3 times per day. There is no weight loss. Blood tests reveal a haemoglobin of 108 g/L, a ferritin of 7. 11g/L and a folate of 1. 11g/L and are otherwise normal. What is the next best investigation?</p>
+            <div class="options">
+                <label><input type="radio" name="q48" value="Abdominal X-ray"> Abdominal X-ray</label>
+                <label><input type="radio" name="q48" value="Coeliac serology with serum immunoglobulin A(lgA)"> Coeliac serology with serum immunoglobulin A(lgA)</label>
+                <label><input type="radio" name="q48" value="Colonoscopy"> Colonoscopy</label>
+                <label><input type="radio" name="q48" value="Stool calprotectin"> Stool calprotectin</label>
+                <label><input type="radio" name="q48" value="Stool culture"> Stool culture</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-49">
+            <p>49- Patient presented to ER with fatigue, diarrhea, bloating, low MCV anaemia . Test help in diagnosis ?</p>
+            <div class="options">
+                <label><input type="radio" name="q49" value="Anti tissue Trans glutaminase"> Anti tissue Trans glutaminase</label>
+                <label><input type="radio" name="q49" value="Anti mitochondrial antibody"> Anti mitochondrial antibody</label>
+                <label><input type="radio" name="q49" value="Anti smooth muscle antibody"> Anti smooth muscle antibody</label>
+                <label><input type="radio" name="q49" value="Antinuclear antibody"> Antinuclear antibody</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-50">
+            <p>50- A 31-year-old woman presents with symptoms consistent with coeliac disease. Which one of the following tests should be used first-line when screening patients for coeliac disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q50" value="Anti-casein antibodies"> Anti-casein antibodies</label>
+                <label><input type="radio" name="q50" value="Tissue transglutaminase antibodies"> Tissue transglutaminase antibodies</label>
+                <label><input type="radio" name="q50" value="Anti-gliadin antibodies"> Anti-gliadin antibodies</label>
+                <label><input type="radio" name="q50" value="Xylose absorption test"> Xylose absorption test</label>
+                <label><input type="radio" name="q50" value="Anti-endomyseal antibodies"> Anti-endomyseal antibodies</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-51">
+            <p>51- A 25 year old woman, presents to the family physician requesting a test for coeliac disease as her sister has received a recent diagnosis of this condition. Her blood results show a mildly positive, anti-tissue transglutaminase (tTG) with a low serum lgA. What is the next best investigation?</p>
+            <div class="options">
+                <label><input type="radio" name="q51" value="Check anti-endomysial antibody (anti-EMA) and immunoglobulin G (lgG)"> Check anti-endomysial antibody (anti-EMA) and immunoglobulin G (lgG)</label>
+                <label><input type="radio" name="q51" value="Check human leucocyte antigen (HLA) status"> Check human leucocyte antigen (HLA) status</label>
+                <label><input type="radio" name="q51" value="Commence a gluten-free diet and monitor for symptoms"> Commence a gluten-free diet and monitor for symptoms</label>
+                <label><input type="radio" name="q51" value="Endoscopy for gastric and jejunal biopsies"> Endoscopy for gastric and jejunal biopsies</label>
+                <label><input type="radio" name="q51" value="Recheck anti-tTG and lgA on a gluten-containing diet for 7 days"> Recheck anti-tTG and lgA on a gluten-containing diet for 7 days</label>
+            </div>
+        </div>
+        <div class="question" id="question-52">
+            <p>52- A 26-year-old woman who is known to have type 1 diabetes mellitus presents with a three-month history of diarrhoea, fatigue and weight loss. She has tried excluding gluten from her diet for the past 4 weeks and feels much better. She requests to be tested so that a diagnosis of coeliac disease is confirmed. What is the most appropriate next step?</p>
+            <div class="options">
+                <label><input type="radio" name="q52" value="Check her HbA1c"> Check her HbA1c</label>
+                <label><input type="radio" name="q52" value="No need for further investigation as the clinical response is diagnostic"> No need for further investigation as the clinical response is diagnostic</label>
+                <label><input type="radio" name="q52" value="Check anti-endomysial antibodies"> Check anti-endomysial antibodies</label>
+                <label><input type="radio" name="q52" value="Arrange a jejunal biopsy"> Arrange a jejunal biopsy</label>
+                <label><input type="radio" name="q52" value="Ask her to reintroduce gluten for the next 6 weeks before further testing"> Ask her to reintroduce gluten for the next 6 weeks before further testing</label>
+            </div>
+        </div>
+        <div class="question" id="question-53">
+            <p>53- A 30-year-old woman is investigated for chronic diarrhoea., bloating and tiredness. A diagnosis of coeliac disease is suspected. Which one of the following factors would increase the likelihood of a false negative serology test?</p>
+            <div class="options">
+                <label><input type="radio" name="q53" value="Hyposplenism"> Hyposplenism</label>
+                <label><input type="radio" name="q53" value="Being on a gluten free diet for one week prior to the test"> Being on a gluten free diet for one week prior to the test</label>
+                <label><input type="radio" name="q53" value="A course of prednisolone one week prior to the test"> A course of prednisolone one week prior to the test</label>
+                <label><input type="radio" name="q53" value="The presence of dermatitis herpetiformis"> The presence of dermatitis herpetiformis</label>
+                <label><input type="radio" name="q53" value="Selective IgA deficiency"> Selective IgA deficiency</label>
+            </div>
+        </div>
+        <div class="question" id="question-54">
+            <p>54- Patient presented to ER with diarrhoea, angular stomatitis and glossitis. Which is deficient?</p>
+            <div class="options">
+                <label><input type="radio" name="q54" value="Vitamin B12"> Vitamin B12</label>
+                <label><input type="radio" name="q54" value="Thiamine"> Thiamine</label>
+                <label><input type="radio" name="q54" value="Niacin"> Niacin</label>
+                <label><input type="radio" name="q54" value="Pyridoxine"> Pyridoxine</label>
+                <label><input type="radio" name="q54" value="Iron"> Iron</label>
+            </div>
+        </div>
+        <div class="question" id="question-55">
+            <p>55- Which of the following patients with celiac disease is susceptible to pneumonia?</p>
+            <div class="options">
+                <label><input type="radio" name="q55" value="patients with splenic atrophy"> patients with splenic atrophy</label>
+                <label><input type="radio" name="q55" value="Patients with Nausea and vomiting"> Patients with Nausea and vomiting</label>
+                <label><input type="radio" name="q55" value="Patients with Diarrhea and bloating"> Patients with Diarrhea and bloating</label>
+            </div>
+        </div>
+        <div class="question" id="question-56">
+            <p>56- An individual with coeliac disease is admitted to the high dependency unit with a pneumococcal bacteraemia. What disease associated with coeliac disease is likely responsible?</p>
+            <div class="options">
+                <label><input type="radio" name="q56" value="Primary biliary cirrhosis"> Primary biliary cirrhosis</label>
+                <label><input type="radio" name="q56" value="Sarcoidosis"> Sarcoidosis</label>
+                <label><input type="radio" name="q56" value="Small bowel lymphoma"> Small bowel lymphoma</label>
+                <label><input type="radio" name="q56" value="Splenic atrophy"> Splenic atrophy</label>
+                <label><input type="radio" name="q56" value="Type 1 diabetes mellitus"> Type 1 diabetes mellitus</label>
+            </div>
+        </div>
+        <div class="question" id="question-57">
+            <p>57- Which of the following is not a recognised complication of coeliac disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q57" value="Hypersplenism"> Hypersplenism</label>
+                <label><input type="radio" name="q57" value="Osteoporosis"> Osteoporosis</label>
+                <label><input type="radio" name="q57" value="Lactose intolerance"> Lactose intolerance</label>
+                <label><input type="radio" name="q57" value="Oesophageal cancer"> Oesophageal cancer</label>
+                <label><input type="radio" name="q57" value="Subfertility"> Subfertility</label>
+            </div>
+        </div>
+        <div class="question" id="question-58">
+            <p>58- Which one of the following is most associated with oesophageal cancer?</p>
+            <div class="options">
+                <label><input type="radio" name="q58" value="Coeliac disease"> Coeliac disease</label>
+                <label><input type="radio" name="q58" value="Hypothyroidism"> Hypothyroidism</label>
+                <label><input type="radio" name="q58" value="Crohn's disease"> Crohn's disease</label>
+                <label><input type="radio" name="q58" value="Addison's disease"> Addison's disease</label>
+                <label><input type="radio" name="q58" value="Ulcerative colitis"> Ulcerative colitis</label>
+            </div>
+        </div>
+        <div class="question" id="question-59">
+            <p>59- The basic defect in celiac sprue lies in ..</p>
+            <div class="options">
+                <label><input type="radio" name="q59" value="Protein metabolism"> Protein metabolism</label>
+                <label><input type="radio" name="q59" value="Fat metabolism"> Fat metabolism</label>
+                <label><input type="radio" name="q59" value="Carbohydrate metabolism"> Carbohydrate metabolism</label>
+                <label><input type="radio" name="q59" value="Vitamins and minerals absorption"> Vitamins and minerals absorption</label>
+                <label><input type="radio" name="q59" value="Mucosal defect"> Mucosal defect</label>
+            </div>
+        </div>
+        <div class="question" id="question-60">
+            <p>60- Of those listed below, which pathophysiological process most likely leads to coeliac disease?</p>
+            <div class="options">
+                <label><input type="radio" name="q60" value="H. pylori colonisation of the small bowel mucosa"> H. pylori colonisation of the small bowel mucosa</label>
+                <label><input type="radio" name="q60" value="Ingestion of gluten-containing foods in genetically susceptible individuals leading to aT-cell-mediated mucosal response in the small bowel, associated with microbial dysbiosis"> Ingestion of gluten-containing foods in genetically susceptible individuals leading to aT-cell-mediated mucosal response in the small bowel, associated with microbial dysbiosis</label>
+                <label><input type="radio" name="q60" value="Ingestion of gluten-containing foods in individuals with HLA-002/008 status"> Ingestion of gluten-containing foods in individuals with HLA-002/008 status</label>
+                <label><input type="radio" name="q60" value="Ingestion of gluten-containing foods leading to microbial dysbiosis and microbial secretion of short-chain fatty acids"> Ingestion of gluten-containing foods leading to microbial dysbiosis and microbial secretion of short-chain fatty acids</label>
+                <label><input type="radio" name="q60" value="Interrupted T-cell tolerance in the colon leading to activation of Th17 immune cells that react with gluten in the proximal small bowel"> Interrupted T-cell tolerance in the colon leading to activation of Th17 immune cells that react with gluten in the proximal small bowel</label>
+            </div>
+        </div>
+
+        <div class="question" id="question-61">
+            <p>61- A 42-year-old woman is investigated for lethargy and diarrhoea; investigations reveal positive anti-endomysial antibodies. Each of the following food stuffs should be avoided, except:</p>
+            <div class="options">
+                <label><input type="radio" name="q61" value="Beer"> Beer</label>
+                <label><input type="radio" name="q61" value="Rye"> Rye</label>
+                <label><input type="radio" name="q61" value="Maize"> Maize</label>
+                <label><input type="radio" name="q61" value="Bread"> Bread</label>
+                <label><input type="radio" name="q61" value="Pasta"> Pasta</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-62">
+            <p>62- Left lower quadrant pain organ is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q62" value="Spleen"> Spleen</label>
+                <label><input type="radio" name="q62" value="Ascending colon"> Ascending colon</label>
+                <label><input type="radio" name="q62" value="Gallbladder"> Gallbladder</label>
+                <label><input type="radio" name="q62" value="Sigmoid colon"> Sigmoid colon</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-63">
+            <p>63- A 32-year-old woman is evaluated in the emergency department for abdominal pain. She reports a vague loss of appetite for the past day and has had progressively severe abdominal pain, initially at her umbilicus, but now localised to her right lower quadrant. The pain is crampy. She has not moved her bowels or vomited. She reports that she is otherwise healthy and has had no sick contact. Exam is notable for a temperature of 100.7°F and heart rate of 105 bpm, but otherwise, vital signs are normal. Her abdomen is tender in the right lower quadrant, and pelvic examination is normal. Urine pregnancy test is negative. Which of the following imaging modalities is most likely to confirm her diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q63" value="CT of the abdomen without contrast"> CT of the abdomen without contrast</label>
+                <label><input type="radio" name="q63" value="Colonoscopy"> Colonoscopy</label>
+                <label><input type="radio" name="q63" value="Pelvic ultrasound"> Pelvic ultrasound</label>
+                <label><input type="radio" name="q63" value="Plain film of the abdomen"> Plain film of the abdomen</label>
+                <label><input type="radio" name="q63" value="Ultrasound of the abdomen"> Ultrasound of the abdomen</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-64">
+            <p>64- Pain in appendicitis is mediated by ..</p>
+            <div class="options">
+                <label><input type="radio" name="q64" value="Prostaglandins and bradykinin"> Prostaglandins and bradykinin</label>
+                <label><input type="radio" name="q64" value="Leukotriene"> Leukotriene</label>
+                <label><input type="radio" name="q64" value="Histamine"> Histamine</label>
+                <label><input type="radio" name="q64" value="Substance B"> Substance B</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-65">
+            <p>65- A 22 year old woman presents with abdominal swelling and vomiting. Which is the diagnosis that should be excluded first?</p>
+            <div class="options">
+                <label><input type="radio" name="q65" value="Ascites"> Ascites</label>
+                <label><input type="radio" name="q65" value="Bowel obstruction"> Bowel obstruction</label>
+                <label><input type="radio" name="q65" value="Constipation"> Constipation</label>
+                <label><input type="radio" name="q65" value="Obesity"> Obesity</label>
+                <label><input type="radio" name="q65" value="Pregnancy"> Pregnancy</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-66">
+            <p>66- 51 years old married father presents with abdominal pain and weight loss. CT abdomen reveals extensive mid pancreatic mass with liver metastases. What should you tell the patient ?</p>
+            <div class="options">
+                <label><input type="radio" name="q66" value="That referral to oncologist will be made"> That referral to oncologist will be made</label>
+                <label><input type="radio" name="q66" value="That he has serious life threatening illness"> That he has serious life threatening illness</label>
+                <label><input type="radio" name="q66" value="That we now have effective therapy for pancreatic cancer"> That we now have effective therapy for pancreatic cancer</label>
+                <label><input type="radio" name="q66" value="Nature of histology of disease and refer patient to oncologist with discussion of prognosis"> Nature of histology of disease and refer patient to oncologist with discussion of prognosis</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-67">
+            <p>67- A 24-year-old man presents with rectal bleeding and pain on defecation. This has been present for the past two weeks. He has a tendency towards constipation and notices that when he wipes himself fresh blood is often on the paper. Rectal examination is limited due to pain but no external abnormalities are seen. What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q67" value="Internal haemorrhoids"> Internal haemorrhoids</label>
+                <label><input type="radio" name="q67" value="Anal carcinoma"> Anal carcinoma</label>
+                <label><input type="radio" name="q67" value="Rectal polyp"> Rectal polyp</label>
+                <label><input type="radio" name="q67" value="Anogenital herpes"> Anogenital herpes</label>
+                <label><input type="radio" name="q67" value="Anal fissure"> Anal fissure</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-68">
+            <p>68- A 31-year-old man returns for review. He was diagnosed with an anal fissure around 7 weeks ago and has tried dietary modification, laxatives and topical anaesthetic with little benefit. What is the most appropriate next step?</p>
+            <div class="options">
+                <label><input type="radio" name="q68" value="Oral bisacodyl"> Oral bisacodyl</label>
+                <label><input type="radio" name="q68" value="Oral calcium channel blocker"> Oral calcium channel blocker</label>
+                <label><input type="radio" name="q68" value="Topical steroid"> Topical steroid</label>
+                <label><input type="radio" name="q68" value="Buccal glyceryl trinitrate prior to defecation"> Buccal glyceryl trinitrate prior to defecation</label>
+                <label><input type="radio" name="q68" value="Topical glyceryl trinitrate"> Topical glyceryl trinitrate</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-69">
+            <p>69- Patient complains of loin pain. By examination there is loin abscess and groin abscess .. which muscle is affected ?</p>
+            <div class="options">
+                <label><input type="radio" name="q69" value="Latissmus dorsi"> Latissmus dorsi</label>
+                <label><input type="radio" name="q69" value="Psoas muscle"> Psoas muscle</label>
+                <label><input type="radio" name="q69" value="Rectus abdominis"> Rectus abdominis</label>
+                <label><input type="radio" name="q69" value="Creamastric muscle"> Creamastric muscle</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-70">
+            <p>70- A 78-year-old woman presents with persistent diarrhoea. Her symptoms started around three months ago and she is now passing frequent 'mucous' like stools. There is no visible blood in the stool and her weight is stable. Bloods show the following:<br>
+                Hb 11.6 g/dl<br>
+                Platelets 222 * 109/l<br>
+                WBC 7.8<br>
+                Na+ 144 mmol/l<br>
+                K+ 3.1 mmol/l<br>
+                Urea 8.2 mmol/l<br>
+                Creatinine 101 umol/l<br>
+                What is the most likely diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q70" value="Diverticular disease"> Diverticular disease</label>
+                <label><input type="radio" name="q70" value="Angiodysplasia"> Angiodysplasia</label>
+                <label><input type="radio" name="q70" value="Tubular adenoma"> Tubular adenoma</label>
+                <label><input type="radio" name="q70" value="Colon cancer"> Colon cancer</label>
+                <label><input type="radio" name="q70" value="Villous adenoma"> Villous adenoma</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-71">
+            <p>71- The major site of bile salt absorption is ..</p>
+            <div class="options">
+                <label><input type="radio" name="q71" value="Stomach"> Stomach</label>
+                <label><input type="radio" name="q71" value="Duodenum"> Duodenum</label>
+                <label><input type="radio" name="q71" value="Proximal small intestine"> Proximal small intestine</label>
+                <label><input type="radio" name="q71" value="Distal small intestine"> Distal small intestine</label>
+                <label><input type="radio" name="q71" value="Colon"> Colon</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-72">
+            <p>72- All are absorbed maximally in the upper small intestine EXCEPT</p>
+            <div class="options">
+                <label><input type="radio" name="q72" value="Folates"> Folates</label>
+                <label><input type="radio" name="q72" value="Ca++"> Ca++</label>
+                <label><input type="radio" name="q72" value="Vitamin B12"> Vitamin B12</label>
+                <label><input type="radio" name="q72" value="Fe++"> Fe++</label>
+                <label><input type="radio" name="q72" value="K+"> K+</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-73">
+            <p>73- A 46-year-old woman with a 10 year history of Crohn's disease presents for review in the gastroenterology clinic. She complains of persistent diarrhoea despite being on maintenance therapy and having normal inflammatory markers. A diagnosis of bile acid malabsorption is being considered. What is the most appropriate test to investigate this?</p>
+            <div class="options">
+                <label><input type="radio" name="q73" value="Capsule endoscopy"> Capsule endoscopy</label>
+                <label><input type="radio" name="q73" value="SeHCAT test"> SeHCAT test</label>
+                <label><input type="radio" name="q73" value="14C-glycocholic breath test"> 14C-glycocholic breath test</label>
+                <label><input type="radio" name="q73" value="Ileal biopsy"> Ileal biopsy</label>
+                <label><input type="radio" name="q73" value="D-xylose test"> D-xylose test</label>
+            </div>
+        </div>
+        
+        <div class="question" id="question-74">
+            <p>74- A 36 year old woman presents with an intermittent history of diarrhoea and increased bowel-opening frequency over a 2-year period. For the last 8 months, her symptoms have worsened and become persistent. She is currently passing stool 8 times per day with urgency. The consistency of stool is watery and she reports that her stool is green in colour. Her past medical history is mild asthma and cholecystectomy 12 months ago. She has no family history of note. What investigation is most likely to lead to the diagnosis?</p>
+            <div class="options">
+                <label><input type="radio" name="q74" value="Colonoscopy"> Colonoscopy</label>
+                <label><input type="radio" name="q74" value="Endoscopy and duodenal biopsy"> Endoscopy and duodenal biopsy</label>
+                <label><input type="radio" name="q74" value="Hydrogen breath test"> Hydrogen breath test</label>
+                <label><input type="radio" name="q74" value="75 Se-homocholic acid taurine (SeHCAT) scan"> 75 Se-homocholic acid taurine (SeHCAT) scan</label>
+                <label><input type="radio" name="q74" value="Thyroid function test"> Thyroid function test</label>
+            </div>
+        </div>
+
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Next Question</button>
+        <button class="btn" id="submitBtn" onclick="evaluateQuiz()" style="display: none;">Submit Quiz</button>
+
+        <div class="result" id="result">
+            <h2>Results</h2>
+            <div id="score"></div>
+            <div id="answers-summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // إضافة حدث للكيبورد لمنع حفظ الصفحة
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && event.key === "s") {
+                event.preventDefault();
+                alert("تم منع حفظ الصفحة!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع فتح أدوات المطور
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+                alert("تم تعطيل أدوات المطور!");
+            }
+        });
+
+        // إضافة حدث للكيبورد لمنع النقر بزر اليمين
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // يمنع فتح قائمة السياق
+            alert("النقر بزر الماوس الأيمن غير مسموح به.");
+        });
+
+        let currentQuestion = 1;
+        const totalQuestions = 74;
+        let score = 0;
+        let timerInterval;
+        const answers = {
+            q1: "Peptic ulcers",
+            q2: "Somatostatinoma",
+            q3: "She has had an acute upper Gl bleed from an NSAID-induced ulcer",
+            q4: "She should be resuscitated with colloids/ crystalloids followed by blood products",
+            q5: "Insert large-bore cannula and give fluids",
+            q6: "Band ligation",
+            q7: "Endoscopic variceal band ligation",
+            q8: "Terlipressin",
+            q9: "Glypressin",
+            q10: "Propranolol",
+            q11: "PPI for 8 weeks",
+            q12: "Laparotomy and surgical exploration",
+            q13: "Mallory-Weiss tear",
+            q14: "Colon cancer",
+            q15: "Autosomal dominant",
+            q16: "Autosomal dominant",
+            q17: "Atenolol",
+            q18: "One month course of a full-dose proton pump inhibitor",
+            q19: "Hydrochloric acid secretion",
+            q20: "When present, it is always associated with gastritis",
+            q21: "Duodenal ulceration",
+            q22: "H. Pylori infection",
+            q23: "Helicobacter pylori",
+            q24: "Zollinger-Ellison syndrome",
+            q25: "low socioeconomic indicators",
+            q26: "H. pylori eradication",
+            q27: "The inclusion of high-dose, twice-daily PPI therapy in eradication regimens increases efficacy of treatment",
+            q28: "Lansoprazole + amoxicillin +clarithromycin",
+            q29: "Urea breath test",
+            q30: "Course of amoxicillin stopping 3 weeks ago",
+            q31: "H. pylori infection is the most recognised acquired risk factor",
+            q32: "Blood group 0",
+            q33: "Prepyloric",
+            q34: "Acanthosis nigricans",
+            q35: "Irritable bowel syndrome",
+            q36: "Temporary relief of pain by passage of flatus or stool with sense of incomplete evacuation",
+            q37: "62-year-old female",
+            q38: "Waking at night due to the pain",
+            q39: "Psychiatric diagnosis",
+            q40: "Hypnotherapy",
+            q41: "Cognitive behavioural therapy",
+            q42: "Extrahepatic biliary obstruction",
+            q43: "Hemangioma of liver",
+            q44: "Viral hepatitis",
+            q45: "abnormal lysosomal enzymes",
+            q46: "Familial Mediterranean Fever",
+            q47: "A patient who is 'tired all the time",
+            q48: "Coeliac serology with serum immunoglobulin A(lgA)",
+            q49: "Anti tissue Trans glutaminase",
+            q50: "Tissue transglutaminase antibodies",
+            q51: "Check anti-endomysial antibody (anti-EMA) and immunoglobulin G (lgG)",
+            q52: "Ask her to reintroduce gluten for the next 6 weeks before further testing",
+            q53: "Selective IgA deficiency",
+            q54: "Iron",
+            q55: "patients with splenic atrophy",
+            q56: "Splenic atrophy",
+            q57: "Hypersplenism",
+            q58: "Coeliac disease",
+            q59: "Protein metabolism",
+            q60: "Ingestion of gluten-containing foods in genetically susceptible individuals leading to aT-cell-mediated mucosal response in the small bowel, associated with microbial dysbiosis",
+            q61: "Maize",
+            q62: "Sigmoid colon",
+            q63: "CT of the abdomen without contrast",
+            q64: "Prostaglandins and bradykinin",
+            q65: "Pregnancy",
+            q66: "That he has serious life threatening illness",
+            q67: "Anal fissure",
+            q68: "Topical glyceryl trinitrate",
+            q69: "Psoas muscle",
+            q70: "Villous adenoma",
+            q71: "Distal small intestine",
+            q72: "Vitamin B12",
+            q73: "SeHCAT test",
+            q74: "75 Se-homocholic acid taurine (SeHCAT) scan"
+        };
+
+        function showQuestion() {
+            document.querySelectorAll('.question').forEach((q, index) => {
+                q .style.display = index + 1 === currentQuestion ? 'block' : 'none';
+            });
+            document.getElementById('nextBtn').style.display = currentQuestion < totalQuestions ? 'block' : 'none';
+            document.getElementById('submitBtn').style.display = currentQuestion === totalQuestions ? 'block' : 'none';
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            clearInterval(timerInterval);
+            startTimer();
+            showQuestion();
+        }
+
+        function startTimer() {
+            let timeRemaining = 60;
+            document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                document.getElementById('timer').textContent = `Time remaining: ${timeRemaining} seconds`;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    if (currentQuestion < totalQuestions) {
+                        nextQuestion();
+                    } else {
+                        evaluateQuiz();
+                    }
+                }
+            }, 1000);
+        }
+
+        function evaluateQuiz() {
+            score = 0;
+            let summary = '';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                const correctAnswer = answers[`q${i}`];
+                const questionElement = document.getElementById(`question-${i}`);
+                const options = document.querySelectorAll(`input[name="q${i}"]`);
+                let questionSummary = `<p><strong>Question ${i}: </strong>${questionElement.querySelector('p').innerText}</p>`;
+
+                options.forEach(option => {
+                    const optionLabel = option.parentElement;
+                    if (option.value === correctAnswer) {
+                        optionLabel.style.color = 'green';
+                    } else if (selectedOption && selectedOption.value === option.value) {
+                        optionLabel.style.color = 'red';
+                    }
+                });
+
+                questionSummary += `<div>Answer: <strong>${selectedOption ? selectedOption.value : 'None selected'}</strong></div>`;
+                questionSummary += `<div>Correct answer: <strong>${correctAnswer}</strong></div>`;
+
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                    summary += questionSummary + `<p class="correct">Correct</p>`;
+                } else {
+                    summary += questionSummary + `<p class="incorrect">Incorrect</p>`;
+                }
+            }
+
+            document.getElementById('score').textContent = `Your score: ${score} out of ${totalQuestions}`;
+            document.getElementById('answers-summary').innerHTML = summary;
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('timer').style.display = 'none'; 
+            document.querySelectorAll('.question').forEach((q) => q.style.display = 'none');
+
+            clearInterval(timerInterval);
+        }
+
+        window.onload = function() {
+            showQuestion();
+            startTimer();
+        };
+        
+        
+        function nextQuestion() {
+    // Increase the current question counter
+            currentQuestion++;
+
+            // Reset the timer
+            clearInterval(timerInterval); // Stop the current timer
+            startTimer(); // Start the timer from the beginning
+
+            // Show the next question
+            showQuestion();
+        }
+        
+    </script>
+</body>
+</html>
